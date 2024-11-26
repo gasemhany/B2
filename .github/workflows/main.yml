@@ -5,7 +5,7 @@ on:
     - cron: '0 */1 * * *' # يشغل الكود كل ساعة
   push: # عند كل عملية دفع جديدة
     branches:
-      - main # إذا كنت تعمل على فرع آخر، غيّر اسم الفرع هنا
+      - main
 
 jobs:
   build:
@@ -14,10 +14,14 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
+      - name: Configure Git
+        run: |
+          git config user.name "your-username"
+          git config user.email "your-email@example.com"
+          git remote set-url origin https://${{ secrets.GH_TOKEN }}@github.com/your-username/your-repo.git
+
       - name: Run B2 Tasks
         run: |
           echo "Executing simple auto-refresh tasks..."
-          # أمر التحديث من المستودع
           git pull
-          # أمر إعادة رفع التغييرات (إذا لزم الأمر)
           git push
