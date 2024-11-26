@@ -18,7 +18,7 @@ jobs:
         run: |
           git config user.name "gasemhany" # استبدل باسم المستخدم الفعلي
           git config user.email "gasemar684@gmail.com" # استبدل بالبريد الإلكتروني الفعلي
-          git remote set-url origin https://${{ secrets.GH_TOKEN }}@github.com/gasemhany/B2.git # استبدل بالقيم الصحيحة
+          git remote set-url origin https://${{ secrets.B2 }}@github.com/gasemhany/B2.git # استخدم التوكن المحفوظ كـ secret
 
       - name: Run B2 Tasks
         run: |
